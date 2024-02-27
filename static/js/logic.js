@@ -20,20 +20,13 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
 
   // This function determines the color of the marker based on the magnitude of the earthquake.
   function getColor(depth) {
-    switch (true) {
-      case depth > 90:
-        return "#FB1401";
-      case depth > 70:
-        return "#FB3E01";
-      case depth > 50:
-        return "#FB7301";
-      case depth > 30:
-        return "#FED924";
-      case depth > 10:
-        return "#04ED0B";
-      default:
-        return "#038006";
-    }
+    console.log(typeof depth, depth);
+    if (depth > 90) return "#FB1401";
+    if (depth > 70) return "#FB3E01";
+    if (depth > 50) return "#FB7301";
+    if (depth > 30) return "#FED924";
+    if (depth > 10) return "#04ED0B";
+    return "#038006";
   }
 
   // This function determines the radius of the earthquake marker based on its magnitude.
@@ -91,7 +84,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
   
     let depths = [-10, 10, 30, 50, 70, 90];
     let colors = ["#038006", "#04ED0B", "#FED924", "#FB7301", "#FB3E01", "#FB1401"];
-  
+    div.innerHTML += 'Legend <br>'
     // Loop through depth ranges to generate a label with a colored square for each range.
     for (let i = 0; i < depths.length; i++) {
       let depthLabel = depths[i];
@@ -103,6 +96,8 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
       let colorSquare = '<i style="background:' + getColor(depthLabel) + '"></i>';
   
       div.innerHTML += colorSquare + ' ' + depthRange + '<br>';
+
+      
     }
     return div;
   };

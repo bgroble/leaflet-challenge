@@ -8,3 +8,13 @@ body,
 html {
   height: 100%;
 }
+
+.info.legend {
+  background: white;
+}
+
+.info.legend i{
+  display: inline-block; 
+  width: 1rem;
+  height: 1rem;
+}
